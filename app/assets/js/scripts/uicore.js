@@ -50,6 +50,7 @@ if(!isDev){
             case 'update-available':
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
+                //Lien de téléchargement des nouvelles versions du launcher
                 if(process.platform === 'darwin'){
                     info.darwindownload = `https://github.com/auracreepey/ProximaLauncher/releases/download/v${info.version}/Helios-Launcher-setup-${info.version}${process.arch === 'arm64' ? '-arm64' : '-x64'}.dmg`
                     showUpdateUI(info)

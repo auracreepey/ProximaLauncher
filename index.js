@@ -16,7 +16,7 @@ const { AZURE_CLIENT_ID, MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR, SHELL_OPCODE 
 function initAutoUpdater(event, data) {
 
     if(data){
-        autoUpdater.allowPrerelease = true
+        autoUpdater.allowPrerelease = false
     } else {
         // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
         // autoUpdater.allowPrerelease = true
@@ -27,7 +27,7 @@ function initAutoUpdater(event, data) {
         autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml')
     }
     if(process.platform === 'darwin'){
-        autoUpdater.autoDownload = false
+        autoUpdater.autoDownload = true
     }
     autoUpdater.on('update-available', (info) => {
         event.sender.send('autoUpdateNotification', 'update-available', info)

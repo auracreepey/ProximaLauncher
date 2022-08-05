@@ -324,10 +324,10 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // If the result is null, no valid Java installation was found.
                 // Show this information to the user.
                 setOverlayContent(
-                    'No Compatible<br>Java Installation Found',
-                    'In order to join this server, you need a 64-bit installation of Java ?. Would you like us to install a copy?',
+                    'Erreur<br>Installation java incompatible',
+                    'Pour rejoindre ce serveur, vous avez besoin d\'une installation 64 bits de Java. Souhaitez-vous installer une copie maintenant?',
                     'Installer java',
-                    'Installer manuelement'
+                    'Installation manuelle'
                 )
                 setOverlayHandler(() => {
                     setLaunchDetails('Préparation du téléchargement..')
@@ -338,11 +338,12 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 setDismissHandler(() => {
                     $('#overlayContent').fadeOut(250, () => {
                         //$('#overlayDismiss').toggle(false)
+                        //<a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Guide de gestion Java pour HeliosLauncher</a>
                         setOverlayContent(
-                            'Java is Required<br>to Launch',
-                            'A valid x64 installation of Java 8 is required to launch.<br><br>Please refer to our <a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java Management Guide</a> for instructions on how to manually install Java.',
-                            'I Understand',
-                            'Go Back'
+                            'Java est requis<br>pour jouer',
+                            'Une installation x64 valide de Java 8 est requise pour lancer minecraft.<br><br>Veuillez vous référer à ce guide <a href="https://github.com/auracreepey/ProximaLauncher">Guide de gestion Java pour HeliosLauncher</a> pour obtenir des instructions sur l\'installation manuelle de Java.',
+                            'Continuer',
+                            'Annuler'
                         )
                         setOverlayHandler(() => {
                             toggleLaunchArea(false)
@@ -384,10 +385,11 @@ function asyncSystemScan(mcVersion, launchAfter = true){
 
                 // Oracle JRE enqueue failed. Probably due to a change in their website format.
                 // User will have to follow the guide to install Java.
+                //<a href="https://github.com/dscalzi/HeliosLauncher/wiki">Troubleshooting Guide</a>,
                 setOverlayContent(
-                    'Unexpected Issue:<br>Java Download Failed',
-                    'Unfortunately we\'ve encountered an issue while attempting to install Java. You will need to manually install a copy. Please check out our <a href="https://github.com/dscalzi/HeliosLauncher/wiki">Troubleshooting Guide</a> for more details and instructions.',
-                    'I Understand'
+                    'Une erreur est survenue:<br>Le téléchargement de Java a échoué',
+                    'Malheureusement, nous avons rencontré un problème lors de la tentative d\'installation de Java. Vous devrez installer manuellement une copie. Veuillez consulter notre <a href="https://github.com/auracreepey/ProximaLauncher">Guide de dépannage</a> pour plus de détails et d\'instructions.',
+                    'D\'accord'
                 )
                 setOverlayHandler(() => {
                     toggleOverlay(false)
@@ -486,7 +488,7 @@ function dlAsync(login = true){
 
     if(login) {
         if(ConfigManager.getSelectedAccount() == null){
-            loggerLanding.error('You must be logged into an account.')
+            loggerLanding.error('Vous devez être connecté à un compte.')
             return
         }
     }
@@ -636,7 +638,7 @@ function dlAsync(login = true){
                 loggerLaunchSuite.error('Erreur lors de la validation:', m.result)
 
                 loggerLaunchSuite.error('Erreur lors du lancement', m.result.error)
-                showLaunchFailure('Error During Launch', 'Please check the console (CTRL + Shift + i) for more details.')
+                showLaunchFailure('Erreur lors du lancement', 'Veuillez vérifier la console (CTRL + Maj + i) pour plus de détails.')
 
                 allGood = false
             }
@@ -651,7 +653,7 @@ function dlAsync(login = true){
                 setLaunchDetails('Lancement du jeu..')
 
                 // const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
-                const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} joined the game`)
+                const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} a rejoint le jeu`)
 
                 const onLoadComplete = () => {
                     toggleLaunchArea(false)
@@ -683,9 +685,9 @@ function dlAsync(login = true){
                 const gameStateChange = function(data){
                     data = data.trim()
                     if(SERVER_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Exploring the Realm!')
+                        DiscordWrapper.updateDetails('En ligne sur ProximaLauncher')
                     } else if(GAME_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Sailing to pxa!')
+                        DiscordWrapper.updateDetails('Joue sur ProximaLauncher!')
                     }
                 }
 
@@ -693,7 +695,7 @@ function dlAsync(login = true){
                     data = data.trim()
                     if(data.indexOf('Could not find or load main class net.minecraft.launchwrapper.Launch') > -1){
                         loggerLaunchSuite.error('Game launch failed, LaunchWrapper was not downloaded properly.')
-                        showLaunchFailure('Error During Launch', 'The main file, LaunchWrapper, failed to download properly. As a result, the game cannot launch.<br><br>To fix this issue, temporarily turn off your antivirus software and launch the game again.<br><br>If you have time, please <a href="https://github.com/dscalzi/HeliosLauncher/issues">submit an issue</a> and let us know what antivirus software you use. We\'ll contact them and try to straighten things out.')
+                        showLaunchFailure("Erreur lors du lancement', 'Le fichier principal, LaunchWrapper, n'a pas pu être téléchargé correctement. Par conséquent, le jeu ne peut pas se lancer.<br><br>Ce problème vient probablement de votre logiciel anti-virus.<br>Pour résoudre ce problème, désactivez temporairement votre logiciel antivirus et relancez le jeu.<br><br>Si vous avez le temps, veuillez signaler ce problème dans Discord (sur le groupe ou à aura_creeper).")
                     }
                 }
 
@@ -705,7 +707,7 @@ function dlAsync(login = true){
                     proc.stdout.on('data', tempListener)
                     proc.stderr.on('data', gameErrorListener)
 
-                    setLaunchDetails('Done. Enjoy the server!')
+                    setLaunchDetails('Terminé, Amusez-vous bien!')
 
                     // Init Discord Hook
                     const distro = DistroManager.getDistribution()
@@ -722,8 +724,8 @@ function dlAsync(login = true){
 
                 } catch(err) {
 
-                    loggerLaunchSuite.error('Error during launch', err)
-                    showLaunchFailure('Error During Launch', 'Please check the console (CTRL + Shift + i) for more details.')
+                    loggerLaunchSuite.error('Erreur lors du lancement', err)
+                    showLaunchFailure('Erreur lors du lancement', 'Veuillez vérifier la console (CTRL + Maj + i) pour plus de détails.')
 
                 }
             }
@@ -752,7 +754,7 @@ function dlAsync(login = true){
         }, (err) => {
             loggerLaunchSuite.error('Unable to refresh distribution index.', err)
             if(DistroManager.getDistribution() == null){
-                showLaunchFailure('Fatal Error', 'Could not load a copy of the distribution index. See the console (CTRL + Shift + i) for more details.')
+                showLaunchFailure('Erreur fatale', 'Impossible de charger une copie de l\'index de distribution. Voir la console (CTRL + Maj + i) pour plus de détails.')
 
                 // Disconnect from AssetExec
                 aEx.disconnect()

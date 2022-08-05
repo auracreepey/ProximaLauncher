@@ -537,7 +537,7 @@ exports.pullRemote = function(){
         return exports.pullLocal()
     }
     return new Promise((resolve, reject) => {
-        const distroURL = 'http://185.171.202.142/proxima-launcher/updfiles/1.16.5/distribution.json'
+        const distroURL = 'http://185.171.202.142/proxima-launcher/updfiles/distrub/distribution.json'
         //const distroURL = 'https://gist.githubusercontent.com/dscalzi/53b1ba7a11d26a5c353f9d5ae484b71b/raw/'
         const opts = {
             url: distroURL,
