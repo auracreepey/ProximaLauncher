@@ -1,0 +1,49 @@
+{
+    "html": {
+        "avatarOverlay": "Modifier"
+    },
+    "js": {
+        "login": {
+            "error": {
+                "invalidValue": "* Invalide",
+                "requiredValue": "* Requis",
+                "userMigrated": {
+                    "title": "Connexion impossible:<br>Identifiants invalides",
+                    "desc": "Ce compte à migré. Réessayer avec l'adresse email à la place du nom d'utilisateur."
+                },
+                "invalidCredentials": {
+                    "title": "Connexion impossible:<br>Identifiants invalides",
+                    "desc": "Ces identifiants sont incorrects, veuillez réessayer"
+                },
+                "rateLimit": {
+                    "title": "Connexion impossible:<br>Réessayer plus tard",
+                    "desc": "Il y a eu trop de tentatives de connexion avec ce compte récemment. Veuillez réessayer plus tard."
+                },
+                "noInternet": {
+                    "title": "Erreur:<br>Aucune connexion internet ",
+                    "desc": "Vérifiez vos paramètres internet."
+                },
+                "authDown": {
+                    "title": "Erreur:<br>Authentication Server Offline",
+                    "desc": "Les serveurs d'authentification de Mojang sont hors-ligne. Plus d'info sur le <a href=\"https://help.mojang.com/\">Centre d'aide Mojang</a>."
+                },
+                "notPaid": {
+                    "title": "Erreur:<br>Vous ne possèdez pas le jeu",
+                    "desc": "Le compte avec lequel vous essayez de vous connecter n'a pas acheté de copie de Minecraft.<br>Vous pouvez acheter une copie sur <a href=\"https://minecraft.net/\">le site officiel</a>."
+                },
+                "unknown": {
+                    "title": "Une erreur est survenu:<br>Erreur inconnue, vérifiez les logs?"
+                }
+            },
+            "login": "Connexion",
+            "loggingIn": "Se connecter",
+            "success": "Validé!",
+            "tryAgain": "Réessayer"
+        },
+        "landing": {
+            "launch": {
+                "pleaseWait": "Veuillez patienter.."
+            }
+        }
+    }
+}
