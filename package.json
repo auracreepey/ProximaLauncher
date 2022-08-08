@@ -1,13 +1,13 @@
 {
   "name": "proxima-launcher",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "productName": "Proxima Launcher",
   "description": "Launcher Minecraft customisé",
-  "author": "Daniel Scalzi, Proxima",
+  "author": "Proxima",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/dscalzi/HeliosLauncher",
+  "homepage": "https://github.com/auracreepey/ProximaLauncher",
   "bugs": {
-    "url": "https://github.com/dscalzi/HeliosLauncher/issues"
+    "url": "https://github.com/auracreepey/ProximaLauncher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -48,6 +48,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+    "url": "git+https://github.com/auracreepey/ProximaLauncher.git"
   }
 }
