@@ -539,7 +539,7 @@ exports.pullRemote = function(){
     return new Promise((resolve, reject) => {
         //Le chemin d'accès du fichier de distribution est indiqué ici
         //Modifier ce lien et/ou le fichier de distribution peut engendrer un ban de l'anticheat!!
-        const distroURL = 'http://185.171.202.142/mc/proxima-launcher/update_files/distrub/distribution.json'
+        const distroURL = 'http://185.171.202.142/minecraft/launchers/proxima-launcher/update_files/distrub/distribution.json'
         //const distroURL = 'https://gist.githubusercontent.com/dscalzi/53b1ba7a11d26a5c353f9d5ae484b71b/raw/'
         const opts = {
             url: distroURL,
